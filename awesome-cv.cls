@@ -261,6 +261,10 @@
 % Usage: \mobile{<mobile number>}
 \newcommand*{\mobile}[1]{\def\@mobile{#1}}
 
+% Defines writer's telegram (optional)
+% Usage: \telegram{<telegram-nick>}
+\newcommand*{\telegram}[1]{\def\@telegram{#1}}
+
 % Defines writer's email (optional)
 % Usage: \email{<email address>}
 \newcommand*{\email}[1]{\def\@email{#1}}
@@ -468,6 +472,12 @@
         {%
           \href{tel:\@mobile}{\faMobile\acvHeaderIconSep\@mobile}%
           \setbool{isstart}{false}%
+        }%
+      \ifthenelse{\isundefined{\@telegram}}%
+        {}%
+        {%
+          \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
+          \href{https://www.t.me/\@telegram}{\faTelegram\acvHeaderIconSep\@telegram}%
         }%
       \ifthenelse{\isundefined{\@email}}%
         {}%
